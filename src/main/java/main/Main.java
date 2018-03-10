@@ -4,10 +4,11 @@ import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        /*ArgumentsParser argumentsParser = new ArgumentsParser();
-        argumentsParser.parse(args);*/
 
-        Parliament parliament = new Parliament();
+        ArgumentsParser argumentsParser = new ArgumentsParser();
+        argumentsParser.parse(args);
+
+        /*Parliament parliament = new Parliament();
         parliament.build(7);
         System.out.println(parliament.average());
         System.out.println("…………………………………………………………………………");
@@ -21,6 +22,6 @@ public class Main {
         System.out.println("…………………………………………………………………………");
         System.out.println(parliament.getSumOfExpenses("Grzegorz Schetyna"));
         System.out.println("…………………………………………………………………………");
-        System.out.println(parliament.getSmallExpenses("Ryszard Kalisz"));
+        System.out.println(parliament.getSmallExpenses("Ryszard Kalisz"));*/
     }
 }

@@ -1,8 +1,5 @@
 package main;
 
-/**
- * Created by kreska on 08.01.17.
- */
 public class Data {
     private Politician[] politicians;
     private String nextUrl;

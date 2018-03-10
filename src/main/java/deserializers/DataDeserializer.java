@@ -1,13 +1,11 @@
 package deserializers;
 
 import com.google.gson.*;
-import main.*;
+import main.Data;
+import main.Politician;
 
 import java.lang.reflect.Type;
 
-/**
- * Created by kreska on 08.01.17.
- */
 public class DataDeserializer implements JsonDeserializer<Data> {
 
     @Override
@@ -23,7 +21,8 @@ public class DataDeserializer implements JsonDeserializer<Data> {
         try {
             data.setNextUrl(jsonUrls.get("next").getAsString());
             data.setLastUrl(jsonUrls.get("last").getAsString());
-        } catch (NullPointerException e) {}
+        } catch (NullPointerException ignored) {
+        }
         return data;
     }
 }

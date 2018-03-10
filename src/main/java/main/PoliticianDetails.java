@@ -1,11 +1,8 @@
 package main;
 
-/**
- * Created by kreska on 08.01.17.
- */
 public class PoliticianDetails {
     private Trip[] trips;
-    private Expense [] expenses;
+    private Expense[] expenses;
 
     public PoliticianDetails(Expense[] expenses) {
         this.expenses = expenses;

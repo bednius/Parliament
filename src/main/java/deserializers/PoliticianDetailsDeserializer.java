@@ -1,14 +1,13 @@
 package deserializers;
 
 import com.google.gson.*;
-import main.*;
+import main.Expense;
+import main.PoliticianDetails;
+import main.Trip;
 
 import java.lang.reflect.Type;
 
-/**
- * Created by kreska on 09.01.17.
- */
-public class PoliticianDetailsDeserializer implements JsonDeserializer<PoliticianDetails>{
+public class PoliticianDetailsDeserializer implements JsonDeserializer<PoliticianDetails> {
 
     @Override
     public PoliticianDetails deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
@@ -21,7 +20,8 @@ public class PoliticianDetailsDeserializer implements JsonDeserializer<Politicia
         try {
             Trip[] trips = jsonDeserializationContext.deserialize(layers.get("wyjazdy"), Trip[].class);
             politicianDetails.setTrips(trips);
-        } catch (Exception e) {}
+        } catch (Exception ignored) {
+        }
         return politicianDetails;
     }
 }

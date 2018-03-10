@@ -2,9 +2,6 @@ package main;
 
 import com.google.gson.annotations.SerializedName;
 
-/**
- * Created by kreska on 08.01.17.
- */
 public class Expense {
     @SerializedName("pola")
     private float[] cost;

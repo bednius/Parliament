@@ -8,22 +8,19 @@ import deserializers.TripDeserializer;
 
 import java.io.IOException;
 
-/**
- * Created by kreska on 09.01.17.
- */
-public class QuestionInterpreter implements Runnable{
 
-    Politician politician;
+public class QuestionInterpreter implements Runnable {
+
+    private Politician politician;
 
     public Data getData(String url) throws IOException {
         RequestsMaker requestsMaker = new RequestsMaker();
         String jsonString = requestsMaker.getJsonString(url);
-        Data data = new GsonBuilder()
+        return new GsonBuilder()
                 .registerTypeAdapter(Data.class, new DataDeserializer())
                 .registerTypeAdapter(Politician.class, new PoliticianDeserializer())
                 .create()
                 .fromJson(jsonString, Data.class);
-        return data;
     }
 
     public void setPolitician(Politician politician) {

@@ -1,13 +1,10 @@
 package deserializers;
 
 import com.google.gson.*;
-import main.*;
+import main.Trip;
 
 import java.lang.reflect.Type;
 
-/**
- * Created by kreska on 09.01.17.
- */
 public class TripDeserializer implements JsonDeserializer<Trip> {
     @Override
     public Trip deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {

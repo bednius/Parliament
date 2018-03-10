@@ -7,9 +7,6 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
 
-/**
- * Created by kreska on 09.01.17.
- */
 public class RequestsMaker {
     public String getJsonString(String url) throws IOException {
         URL site = new URL(url);

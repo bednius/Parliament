@@ -1,15 +1,9 @@
 package main;
 
-import java.security.PublicKey;
-
-/**
- * Created by kreska on 07.01.17.
- */
 public class Politician {
 
     private int id;
     private String name;
-    //private String genitive;
     private Trip[] trips;
     private Expense[] expenses;
 
@@ -20,16 +14,16 @@ public class Politician {
 
     public float getExpenses() {
         float result = 0;
-        for (int i = 0; i < expenses.length; i++) {
-            result += expenses[i].getSum();
+        for (Expense expense : expenses) {
+            result += expense.getSum();
         }
         return result;
     }
 
     public float getSmallExpenses() {
         float result = 0;
-        for (int i = 0; i < expenses.length; i++) {
-            result += expenses[i].getExpense(12);
+        for (Expense expense : expenses) {
+            result += expense.getExpense(12);
         }
         return result;
     }
@@ -53,14 +47,6 @@ public class Politician {
     public void setExpenses(Expense[] expenses) {
         this.expenses = expenses;
     }
-
-    /*public String getGenitive() {
-        return genitive;
-    }
-
-    public void setGenitive(String genitive) {
-        this.genitive = genitive;
-    }*/
 
     public String getName() {
         return name;

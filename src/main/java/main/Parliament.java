@@ -1,21 +1,18 @@
 package main;
 
-//import com.google.gson.GsonBuilder;
-
 import java.io.IOException;
-import java.util.*;
-import java.util.concurrent.*;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
-
-/**
- * Created by kreska on 09.01.17.
- */
 public class Parliament {
     private Map<String, Politician> politiciansMap = new ConcurrentHashMap<>();
     private String nextUrl = "https://api-v3.mojepanstwo.pl/dane/poslowie.json";
     private String lastUrl;
 
-    public void makePoliticians(int cadenceNo) throws IOException {
+    private void makePoliticians(int cadenceNo) throws IOException {
         this.nextUrl += "?conditions[poslowie.kadencja]=" + cadenceNo;
         QuestionInterpreter questionInterpreter = new QuestionInterpreter();
 
@@ -39,7 +36,7 @@ public class Parliament {
         }
     }
 
-    public void makePoliticiansDetails() throws IOException {
+    private void makePoliticiansDetails() throws IOException {
         ExecutorService executorService = Executors.newFixedThreadPool(50);
         for (String key : politiciansMap.keySet()) {
             QuestionInterpreter questionInterpreter = new QuestionInterpreter();
@@ -51,7 +48,8 @@ public class Parliament {
         executorService.shutdown();
         try {
             executorService.awaitTermination(1, TimeUnit.MINUTES);
-        } catch (InterruptedException e) {}
+        } catch (InterruptedException ignored) {
+        }
     }
 
     public void build(int cadenceNo) throws IOException {
@@ -61,13 +59,11 @@ public class Parliament {
 
     @Override
     public String toString() {
-        String result = "";
+        StringBuilder result = new StringBuilder();
         for (String key : politiciansMap.keySet()) {
-            result += politiciansMap.get(key).getName() + " "
-                    + getSmallExpenses(key) + " "
-                    + getSumOfExpenses(key) + "\n";
+            result.append(politiciansMap.get(key).getName()).append(" ").append(getSmallExpenses(key)).append(" ").append(getSumOfExpenses(key)).append("\n");
         }
-        return result;
+        return result.toString();
     }
 
     public float getSumOfExpenses(String key) {
@@ -170,8 +166,8 @@ public class Parliament {
         return result.toString();
     }
 
-    public void politicianExists(String name) {
-        if(!politiciansMap.containsKey(name))
+    private void politicianExists(String name) {
+        if (!politiciansMap.containsKey(name))
             throw new IllegalArgumentException("This politician doesn't exists");
     }
 

@@ -1,10 +1,6 @@
 package main;
 
-import com.google.gson.annotations.SerializedName;
 
-/**
- * Created by kreska on 08.01.17.
- */
 public class Trip {
     private String country;
     private int duration;
@@ -34,14 +30,4 @@ public class Trip {
         this.cost = cost;
     }
 
-   /* private transient String country_code;
-    private transient String delegacja;
-    private transient String miasto;
-    private transient String id;
-    private transient String wniosek_nr;
-    private transient String od;
-    @SerializedName("do")
-    private transient String doo;
-    private transient String koszt_transport;
-    private transient String koszt_dieta;*/
 }
